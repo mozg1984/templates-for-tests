@@ -1,0 +1,8 @@
+.idea
+.env
+
+/go-kafka/.env
+/go-kafka/.idea
+
+/go-postgres/.env
+/go-postgres/.idea
