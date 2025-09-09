@@ -1,8 +1,11 @@
 .idea
 .env
+.DS_Store
 
 /go-kafka/.env
 /go-kafka/.idea
+/go-kafka/.DS_Store
 
 /go-postgres/.env
 /go-postgres/.idea
+/go-postgres/.DS_Store
