@@ -24,6 +24,11 @@ type Consumer struct {
 	id       int
 }
 
+func rebalanceCb(*kafka.Consumer, kafka.Event) error {
+	// TODO
+	return nil
+}
+
 func New(address []string, topic, groupID string, id int, handler Handler) (*Consumer, error) {
 	cfg := kafka.ConfigMap{
 		"bootstrap.servers":        strings.Join(address, ","),
@@ -40,7 +45,7 @@ func New(address []string, topic, groupID string, id int, handler Handler) (*Con
 		return nil, err
 	}
 
-	if err = consumer.Subscribe(topic, nil); err != nil {
+	if err = consumer.Subscribe(topic, rebalanceCb); err != nil {
 		return nil, err
 	}
 
