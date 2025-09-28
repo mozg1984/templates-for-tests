@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongo1:
+    image: mongo:8.0
+    container_name: mongo1-8.0
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ${HOME}/docker/postgres/shared:/home
+      - ${HOME}/docker/mongo/nodes/1/8.0/data:/data
+    networks:
+      - mongo-network
+
+  mongo2:
+    image: mongo:8.0
+    container_name: mongo2-8.0
+    restart: always
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ${HOME}/docker/postgres/shared:/home
+      - ${HOME}/docker/mongo/nodes/2/8.0/data:/data
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
